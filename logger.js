@@ -18,7 +18,16 @@ if (!fs.existsSync(LOG_DIRECTORY)) {
     fs.mkdirSync(LOG_DIRECTORY, { recursive: true });
 }
 
-const getTimestamp = () => new Date().toLocaleString('en-IN');
+const getTimestamp = () => new Date().toLocaleString('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: true 
+  });
 
 const getCurrentLogFile = () => {
     let index = 1;
