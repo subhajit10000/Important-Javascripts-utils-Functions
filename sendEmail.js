@@ -10,7 +10,14 @@ const sendEmail = async (to, subject, text, html = null) => {
             throw new Error("Recipient, subject, and text body are required.");
         }
 
-  
+          // Create transporter
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.SMTP_USER,
+                pass: process.env.SMTP_PASS
+            }
+        });
 
         // Email options
         const mailOptions = {
